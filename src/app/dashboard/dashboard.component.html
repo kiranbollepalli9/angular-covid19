@@ -1,40 +1,46 @@
-<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<div class="mat-elevation-z8">
+  <mat-table [dataSource]="dataSource" matSort>
 
     <ng-container matColumnDef="country">
-      <mat-header-cell *matHeaderCellDef> Country </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.country}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Country </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.country }} </mat-cell>
     </ng-container>
-  
+
     <ng-container matColumnDef="cases">
-      <mat-header-cell *matHeaderCellDef> Total Cases </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.cases}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Total Cases </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.cases }} </mat-cell>
     </ng-container>
-  
+
     <ng-container matColumnDef="todayCases">
-      <mat-header-cell *matHeaderCellDef> Today Cases </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.todayCases}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Today Cases </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.todayCases }} </mat-cell>
     </ng-container>
-  
+
     <ng-container matColumnDef="deaths">
-        <mat-header-cell *matHeaderCellDef> Deaths </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.deaths}} </mat-cell>
-      </ng-container>
-    
-      <ng-container matColumnDef="todayDeaths">
-        <mat-header-cell *matHeaderCellDef> Today Cases </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.todayDeaths}} </mat-cell>
-      </ng-container>
-   
-      <ng-container matColumnDef="recovered">
-        <mat-header-cell *matHeaderCellDef> Recovered </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.recovered}} </mat-cell>
-      </ng-container>
-    
-      <ng-container matColumnDef="todayRecovered">
-        <mat-header-cell *matHeaderCellDef> Today Recovered </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.todayRecovered}} </mat-cell>
-      </ng-container>
-   
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Deaths </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.deaths }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="todayDeaths">
+      <mat-header-cell *matHeaderCellDef> Today Deaths </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.todayDeaths }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="recovered">
+      <mat-header-cell *matHeaderCellDef> Recovered </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.recovered }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="todayRecovered">
+      <mat-header-cell *matHeaderCellDef> Today Recovered </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.todayRecovered }}
+      </mat-cell>
+    </ng-container>
+
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
   </mat-table>
+
+  <mat-paginator [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons></mat-paginator>
+</div>
