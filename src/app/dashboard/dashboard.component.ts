@@ -30,6 +30,12 @@ export class DashboardComponent implements OnInit {
     this.getCountrywiseReports();
   }
 
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  
   getCountrywiseReports() {
     this.service.getCountrywiseReports().subscribe(reports => {
       console.log('the result  \n', reports );
